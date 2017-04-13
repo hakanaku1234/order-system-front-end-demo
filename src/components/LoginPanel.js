@@ -4,8 +4,6 @@
  *
  */
 
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 
 import React from 'react';
 import {
@@ -13,6 +11,8 @@ import {
   AppBar,
   RaisedButton
 } from 'material-ui';
+
+let myFetch = require('../utils/fetch');
 
 export default class LoginPanel extends React.Component {
   constructor(...args) {
@@ -30,20 +30,14 @@ export default class LoginPanel extends React.Component {
   _login() {
     let onSuccess = this.props.onSuccess;
     let prefix = window.__CONFIG__.default.api.prefix;
-    fetch(prefix + '/user', {
-        method: 'POST',
-        credentials: 'include',
-        body: {
-          phone: this.state.phone
+    myFetch.post(prefix + '/user', {
+      phone: this.state.phone
+    })
+      .then(function (data) {
+        if (data) {
+          onSuccess(data);
         }
       })
-      .then(response => {
-        let body = response.body;
-        if (body) {
-          console.log(body);
-        }
-      })
-    // onSuccess('123123');
   }
 
   handleChange(event) {
