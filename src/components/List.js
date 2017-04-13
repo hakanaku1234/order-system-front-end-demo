@@ -5,12 +5,12 @@
  */
 
 import React from 'react';
+import RaisedButton from 'material-ui/RadioButton';
 
-class List extends React.Component {
-  constructor(props) {
-    super(props);
+export default class List extends React.Component {
+  constructor(...args) {
+    super(...args);
 
-    console.log('init');
     this.state = {
       title: 'heheda'
     };
@@ -18,26 +18,19 @@ class List extends React.Component {
     this._renderRow = this._renderRow.bind(this);
   }
 
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
 
   _renderRow(data) {
-    console.log('_renderRow', this.state.title);
   }
 
   render() {
     let {data, ...other} = this.props;
 
     return (
-      <div {...other}>hahah {data} {this.state.title}</div>
+      <div {...other}>
+        hahah {data} {this.state.title}
+        <RaisedButton label="Default"/>
+      </div>
     )
   }
 
 }
-
-export default List;
