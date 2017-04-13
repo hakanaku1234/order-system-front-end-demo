@@ -18,19 +18,24 @@ export default class LoginPanel extends React.Component {
   constructor(...args) {
     super(...args);
 
+    this.state = {
+      phone: '',
+      vcode: ''
+    };
+
     this._login = this._login.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   _login() {
     let onSuccess = this.props.onSuccess;
-    fetch('//')
-    onSuccess('123123');
+    // fetch()
+    // onSuccess('123123');
   }
 
   handleChange(event) {
     let name = event.target.getAttribute('name');
-    let _obj = {}
+    let _obj = {};
     _obj[name] = event.target.value;
     this.setState(_obj);
 
@@ -46,9 +51,13 @@ export default class LoginPanel extends React.Component {
           <TextField
             name="phone"
             onChange={this.handleChange}
+            value={this.state.phone}
             style={{width: '100%'}}
             hintText="请输入手机号码" />
           <TextField
+            name="vcode"
+            onChange={this.handleChange}
+            value={this.state.vcode}
             style={{width: '100%'}}
             hintText="请输入验证码" />
           <RaisedButton

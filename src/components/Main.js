@@ -7,7 +7,6 @@ import cookie from 'react-cookie';
 import List from './List';
 import LoginPanel from './LoginPanel';
 
-
 export default class AppComponent extends React.Component {
   constructor(...args) {
     super(...args);
@@ -21,7 +20,6 @@ export default class AppComponent extends React.Component {
   }
 
   componentWillMount() {
-    console.log(cookie.load('userToken'))
     this.state = {
       userToken: cookie.load('userToken')
     };
