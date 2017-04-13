@@ -2,11 +2,8 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import cookie from 'react-cookie';
+
 import List from './List';
 import LoginPanel from './LoginPanel';
 
@@ -24,6 +21,7 @@ export default class AppComponent extends React.Component {
   }
 
   componentWillMount() {
+    console.log(cookie.load('userToken'))
     this.state = {
       userToken: cookie.load('userToken')
     };
@@ -35,23 +33,19 @@ export default class AppComponent extends React.Component {
   }
 
   onLogout() {
-    cookie.remove('userToken', { path: '/' });
+    cookie.remove('userToken');
   }
 
 
   render() {
     if (!this.state.userToken) {
       return (
-        <MuiThemeProvider>
-          <LoginPanel onSuccess={this.onLogin} />
-        </MuiThemeProvider>
+        <LoginPanel onSuccess={this.onLogin} />
       );
     }
 
     return (
-      <MuiThemeProvider>
-        <List className="list" data="data" />
-      </MuiThemeProvider>
+      <List className="list" />
     );
   }
 }

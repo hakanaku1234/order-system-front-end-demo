@@ -23,11 +23,11 @@ export default class List extends React.Component {
   }
 
   render() {
-    let {data, ...other} = this.props;
+    let {...other} = this.props;
 
     return (
       <div {...other}>
-        hahah {data} {this.state.title}
+        {this.state.title}
         <RaisedButton label="Default"/>
       </div>
     )

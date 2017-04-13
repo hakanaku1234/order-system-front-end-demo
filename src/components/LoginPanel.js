@@ -4,6 +4,8 @@
  *
  */
 
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 import React from 'react';
 import {
@@ -22,7 +24,7 @@ export default class LoginPanel extends React.Component {
 
   _login() {
     let onSuccess = this.props.onSuccess;
-
+    fetch('//')
     onSuccess('123123');
   }
 
@@ -47,8 +49,6 @@ export default class LoginPanel extends React.Component {
             style={{width: '100%'}}
             hintText="请输入手机号码" />
           <TextField
-            name="vcode"
-            onChange={this.handleChange}
             style={{width: '100%'}}
             hintText="请输入验证码" />
           <RaisedButton
