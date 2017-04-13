@@ -13,7 +13,7 @@ export default class AppComponent extends React.Component {
 
     this.state = {
       userToken: null
-    }
+    };
 
     this.onLogin = this.onLogin.bind(this);
     this.onLogout = this.onLogout.bind(this);

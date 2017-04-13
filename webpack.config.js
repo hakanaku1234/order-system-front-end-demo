@@ -28,11 +28,6 @@ function buildConfig(wantedEnv) {
   let isValid = wantedEnv && wantedEnv.length > 0 && allowedEnvs.indexOf(wantedEnv) !== -1;
   let validEnv = isValid ? wantedEnv : 'dev';
   let config = require(path.join(__dirname, 'cfg/' + validEnv));
-  config.plugins.push(
-    new webpack.DefinePlugin({
-      __DEV__: env
-    })
-  )
   return config;
 }
 

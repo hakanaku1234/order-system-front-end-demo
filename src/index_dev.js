@@ -8,7 +8,7 @@ injectTapEventPlugin();
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './components/Main';
 
-let config = require('./config/dist');
+let config = require('./config/dev');
 window.__CONFIG__ = config;
 
 // Render the main component into the dom

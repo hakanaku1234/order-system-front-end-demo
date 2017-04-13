@@ -29,7 +29,20 @@ export default class LoginPanel extends React.Component {
 
   _login() {
     let onSuccess = this.props.onSuccess;
-    // fetch()
+    let prefix = window.__CONFIG__.default.api.prefix;
+    fetch(prefix + '/user', {
+        method: 'POST',
+        credentials: 'include',
+        body: {
+          phone: this.state.phone
+        }
+      })
+      .then(response => {
+        let body = response.body;
+        if (body) {
+          console.log(body);
+        }
+      })
     // onSuccess('123123');
   }
 
@@ -46,25 +59,25 @@ export default class LoginPanel extends React.Component {
   render() {
     return (
       <div>
-        <AppBar title="登录" />
+        <AppBar title="登录"/>
         <div style={{textAlign: 'center', padding: '20px'}}>
           <TextField
             name="phone"
             onChange={this.handleChange}
             value={this.state.phone}
             style={{width: '100%'}}
-            hintText="请输入手机号码" />
+            hintText="请输入手机号码"/>
           <TextField
             name="vcode"
             onChange={this.handleChange}
             value={this.state.vcode}
             style={{width: '100%'}}
-            hintText="请输入验证码" />
+            hintText="请输入验证码"/>
           <RaisedButton
             onMouseDown={this._login}
             label="登录"
             primary={true}
-            style={{marginTop: 12, width: '100%'}} />
+            style={{marginTop: 12, width: '100%'}}/>
         </div>
       </div>
     );
