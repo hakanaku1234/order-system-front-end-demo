@@ -4,7 +4,6 @@
  *
  */
 
-
 import React from 'react';
 import {
   TextField,
@@ -36,9 +35,10 @@ export default class LoginPanel extends React.Component {
 
     let onSuccess = this.props.onSuccess;
     let prefix = window.__CONFIG__.default.api.prefix;
-    myFetch.post(prefix + '/user', {
-      phone: this.state.phone
-    })
+
+    let formData = new FormData();
+    formData.append('phone', this.state.phone);
+    myFetch.post(prefix + '/user', formData)
       .then(function (data) {
         if (data) {
           onSuccess(data);

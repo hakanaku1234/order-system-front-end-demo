@@ -15,7 +15,6 @@ export default class List extends React.Component {
       title: 'heheda'
     };
 
-    this._renderRow = this._renderRow.bind(this);
   }
 
   render() {
