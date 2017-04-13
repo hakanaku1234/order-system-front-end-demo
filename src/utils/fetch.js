@@ -18,10 +18,9 @@ function _parseJSON(response) {
   return response.json()
 }
 
-myFetch.get = function (url, data) {
+myFetch.get = function (url) {
   return fetch(url)
     .then(_checkStatus)
-    .then(_parseJSON)
 };
 
 myFetch.post = function (url, data) {

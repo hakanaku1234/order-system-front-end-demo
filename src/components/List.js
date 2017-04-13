@@ -18,15 +18,9 @@ export default class List extends React.Component {
     this._renderRow = this._renderRow.bind(this);
   }
 
-
-  _renderRow(data) {
-  }
-
   render() {
-    let {...other} = this.props;
-
     return (
-      <div {...other}>
+      <div>
         {this.state.title}
         <RaisedButton label="Default"/>
       </div>
