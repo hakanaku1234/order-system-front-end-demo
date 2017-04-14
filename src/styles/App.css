@@ -1,8 +1,8 @@
 /* Base Application Styles */
 body {
+  font-size: 16px;
 }
-
-#app .init {
+.loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -14,4 +14,19 @@ body {
   background-position: center center;
   -webkit-background-size: 100% auto;
   background-size: 100% auto;
+}
+.title {
+  width: 100%;
+  height: 45px;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 45px;
+  text-align: center;
+  background-color: #bf0c0c;
+}
+.form {
+
+}
+.form .form-group {
+
 }

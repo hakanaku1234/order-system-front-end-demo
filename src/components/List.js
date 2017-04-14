@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import RaisedButton from 'material-ui/RadioButton';
 
 export default class List extends React.Component {
   constructor(...args) {
@@ -21,7 +20,6 @@ export default class List extends React.Component {
     return (
       <div>
         {this.state.title}
-        <RaisedButton label="Default"/>
       </div>
     )
   }
