@@ -10,10 +10,12 @@ import LoginForm from '../containers/LoginForm';
 
 export default class LoginPanel extends React.Component {
   render() {
+    let {...rest} = this.props;
+
     return (
       <div>
         <div className="title">登录</div>
-        <LoginForm className="form" />
+        <LoginForm className="form" {...rest} />
       </div>
     );
   }

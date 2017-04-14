@@ -4,49 +4,44 @@ require('styles/App.css');
 import React from 'react';
 import cookie from 'react-cookie';
 
-import List from './List';
+import ListPanel from './ListPanel';
 import LoginPanel from './LoginPanel';
 
 export default class AppComponent extends React.Component {
-  constructor(...args) {
-    super(...args);
+  constructor() {
+    super();
 
     this.state = {
-      userToken: null
+      userToken: undefined
     };
 
-    this.onLogin = this.onLogin.bind(this);
-    this.onLogout = this.onLogout.bind(this);
+    this._onSuccess = this._onSuccess.bind(this);
   }
 
   componentWillMount() {
-    this.state = {
+    this.setState({
       userToken: cookie.load('userToken')
-    };
+    })
   }
 
-  onLogin(userToken) {
-    this.setState({ userToken });
-    cookie.save('userToken', userToken, { path: '/' });
+  _onSuccess(token) {
+    this.setState({
+      userToken: token
+    });
+    cookie.save('userToken', token, {path: '/'});
   }
-
-  onLogout() {
-    cookie.remove('userToken');
-  }
-
 
   render() {
     if (!this.state.userToken) {
       return (
-        <LoginPanel onSuccess={this.onLogin} />
+        <LoginPanel onSuccess={this._onSuccess}/>
       );
     }
 
     return (
-      <List className="list" />
+      <ListPanel className="list"/>
     );
   }
 }
 
-AppComponent.defaultProps = {
-};
+AppComponent.defaultProps = {};

@@ -5,22 +5,17 @@
  */
 
 import React from 'react';
+import List from '../containers/List';
 
-export default class List extends React.Component {
+export default class ListPanel extends React.Component {
   constructor(...args) {
     super(...args);
-
-    this.state = {
-      title: 'heheda'
-    };
 
   }
 
   render() {
     return (
-      <div>
-        {this.state.title}
-      </div>
+      <List />
     )
   }
 

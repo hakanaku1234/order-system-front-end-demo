@@ -13,82 +13,71 @@ export default class LoginForm extends Component {
     super(...args);
 
     this.state = {
-      isPhoneErr: false,
       phone: '',
       vcode: ''
     };
 
     this._login = this._login.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this._isPhoneErr = this._isPhoneErr.bind(this);
+    this._isPhone = this._isPhone.bind(this);
   }
 
   _login() {
-    if(this.state.isPhoneErr) {
+    if (!this._isPhone(this.state.phone) || !this.state.vcode) {
       return false;
     }
-
-    let onSuccess = this.props.onSuccess;
     let prefix = window.__CONFIG__.default.api.prefix;
-
+    let _onSuccess = this.props.onSuccess;
     let formData = new FormData();
     formData.append('phone', this.state.phone);
     myFetch.post(prefix + '/user', formData)
       .then(function (data) {
         if (data) {
-          onSuccess(data);
+          _onSuccess(data);
         }
       })
   }
 
-  _isPhoneErr(phone) {
-    if(phone && /^1[3|4|5|8|][0-9]\d{8}$/.test(phone)) {
-      this.setState({
-        isPhoneErr: false
-      })
+  _isPhone(phone) {
+    if (phone && /^1[3|4|5|8|][0-9]\d{8}$/.test(phone)) {
+      return true;
     } else {
-      this.setState({
-        isPhoneErr: '手机号码格式不正确.'
-      })
+      return false;
     }
-  }
-
-  handleChange(event) {
-    let name = event.target.getAttribute('name');
-    let _obj = {};
-    _obj[name] = event.target.value;
-    this.setState(_obj);
-
-    if (name == 'phone') {
-      this._isPhoneErr(event.target.value);
-    }
-
-    event.stopPropagation();
-    event.preventDefault();
   }
 
   render() {
-    let {...props} = this.props;
+    let {className} = this.props;
 
     return (
-      <div {...props}>
+      <div className={className}>
         <div className="form-group">
           <input
+            className="form-control"
             name="phone"
-            onChange={this.handleChange}
+            onChange={e => {
+              this.setState({
+                phone: e.target.value
+              })
+            }}
             value={this.state.phone}
             placeholder="请输入手机号码"/>
         </div>
         <div className="form-group">
           <input
+            className="form-control"
             name="vcode"
-            onChange={this.handleChange}
+            onChange={e => {
+              this.setState({
+                vcode: e.target.value
+              })
+            }}
             value={this.state.vcode}
             placeholder="请输入验证码"/>
         </div>
         <div className="form-group">
           <button
-            onMouseDown={this._login}
+            className="btn btn-danger"
+            onClick={this._login}
             label="登录">
             登录
           </button>
