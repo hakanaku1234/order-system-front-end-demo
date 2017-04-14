@@ -9,8 +9,8 @@ import LoginPanel from './LoginPanel';
 import LoginForm2 from '../containers/LoginForm2';
 
 export default class AppComponent extends React.Component {
-  constructor() {
-    super();
+  constructor(...args) {
+    super(...args);
 
     this.state = {
       userToken: undefined
