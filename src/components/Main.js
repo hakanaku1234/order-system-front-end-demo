@@ -6,6 +6,7 @@ import cookie from 'react-cookie';
 
 import ListPanel from './ListPanel';
 import LoginPanel from './LoginPanel';
+import LoginForm2 from '../containers/LoginForm2';
 
 export default class AppComponent extends React.Component {
   constructor() {
@@ -34,7 +35,10 @@ export default class AppComponent extends React.Component {
   render() {
     if (!this.state.userToken) {
       return (
-        <LoginPanel onSuccess={this._onSuccess}/>
+        <div>
+          <LoginPanel onSuccess={this._onSuccess}/>
+          <LoginForm2 />
+        </div>
       );
     }
 
