@@ -1,8 +1,6 @@
 import {combineReducers} from 'redux';
-import {main} from './Main';
+import login, * as fromLogin from './login';
 
-const myReducer = combineReducers({
-  main
-});
-
-export default myReducer;
+export default combineReducers({
+  login
+})

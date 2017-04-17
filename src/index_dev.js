@@ -3,11 +3,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import {main} from './reducers/Main';
 
-import App from './components/Main';
+import reducer from './reducers';
 
-let store = createStore(main);
+import App from './containers/App';
+
+let store = createStore(reducer);
 
 let config = require('./config/dev');
 window.__CONFIG__ = config;
