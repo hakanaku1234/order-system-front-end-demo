@@ -1,13 +1,12 @@
 import React, {} from 'react';
 import LoginForm from '../components/LoginForm';
+import ShopList from '../components/ShopList';
 
-const App = (...args) => {
-  return (
-    <div>
-      <div>登录</div>
-      <LoginForm />
-    </div>
-  )
-};
+const App = () => (
+  <div>
+    <LoginForm />
+    <ShopList />
+  </div>
+)
 
 export default App

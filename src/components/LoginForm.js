@@ -10,9 +10,9 @@ const LoginForm = ({dispatch}) => {
       className="form"
       onSubmit={
         e => {
-          console.log('login');
+          e.preventDefault();
+
           dispatch(loginAction.login(phone.value));
-          console.log('done');
         }
       }>
       <div className="form-group">
