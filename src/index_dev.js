@@ -3,13 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import createLogger from 'redux-logger';
+import {createLogger} from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import reducer from './reducers';
 import App from './containers/App';
 
 const logger = createLogger();
-let store = createStore(reducer, applyMiddleware(logger));
+let store = createStore(
+  reducer,
+  applyMiddleware(thunk, logger));
 
 let config = require('./config/dev');
 window.__CONFIG__ = config;

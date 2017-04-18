@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import {login} from '../actions/login';
 
 const ShopList = ({products, formClick}) => {
-  console.log(products, formClick);
-
   return (
     <div>{products.login.phone}</div>
   )
