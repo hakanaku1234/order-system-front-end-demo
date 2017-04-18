@@ -1,9 +1,14 @@
-import React, {} from 'react';
-import { connect } from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux'
 import * as loginAction from '../actions/login';
+import {shopList} from '../actions/shop';
 
-const LoginForm = ({dispatch}) => {
-  let phone;
+const LoginForm = ({loginForm, dispatch}) => {
+  let phone, vcode;
+  if (loginForm.login.success) {
+    dispatch();
+    return false;
+  }
 
   return (
     <form
@@ -11,19 +16,22 @@ const LoginForm = ({dispatch}) => {
       onSubmit={
         e => {
           e.preventDefault();
-
-          dispatch(loginAction.login(phone.value));
+          dispatch(loginAction.login(phone.value, vcode.value));
         }
       }>
       <div className="form-group">
         <input
-          ref={ node => phone = node }
+          ref={node => phone = node}
           name="phone"
           type="text"
-          className="form-control" />
+          className="form-control"/>
       </div>
       <div className="form-group">
-        <input type="text" className="form-control" />
+        <input
+          ref={node => vcode = node}
+          name="vcode"
+          type="text"
+          className="form-control"/>
       </div>
       <div className="form-group">
         <button type="submit" className="btn btn-danger">登录</button>
@@ -32,4 +40,12 @@ const LoginForm = ({dispatch}) => {
   )
 };
 
-export default connect()(LoginForm)
+const mapStateToProps = (state) => {
+  return {
+    loginForm: state
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(LoginForm)

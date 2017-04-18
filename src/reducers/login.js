@@ -7,27 +7,21 @@ const initialState = {
 
 const login = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN_VALIDATE_PHONE': {
-      if (action.phone && /^1[3|4|5|8][0-9]\d{8}$/.test(action.phone)) {
-        return {
-          phone: action.phone,
-          success: true,
-          errorMessage: ''
-        }
-      } else {
-        return {
-          phone: action.phone,
-          success: false,
-          errorMessage: '手机号码格式不正确.'
-        }
-      }
-    }
     case 'LOGIN': {
+      let success = state.success;
+      let errorMessage = state.errorMessage;
+      if(action.phone && /^1[3|4|5|7|8][0-9]\d{8}$/.test(action.phone)) {
+        success = true;
+        errorMessage = '';
+      } else {
+        success = false;
+        errorMessage = '手机号码格式不正确.';
+      }
       return {
         phone: action.phone,
-        vcode: state.vcode,
-        success: state.success,
-        errorMessage: state.errorMessage
+        vcode: action.vcode,
+        success,
+        errorMessage
       }
     }
     default: {

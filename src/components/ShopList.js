@@ -1,28 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {login} from '../actions/login';
 
-const ShopList = ({products, formClick}) => {
+const ShopList = ({login}) => {
   return (
-    <div>{products.login.phone}</div>
+    <div>
+      <div>{login.phone}</div>
+      <div>{login.errorMessage}</div>
+    </div>
   )
 }
 
 const mapStateToProps = (state) => {
-  return {
-    products: state
-  }
-}
+  console.log(state);
 
-const mapDsipatchToProps = (dispatch) => {
   return {
-    formClick: (id) => {
-      dispatch(login('123123'));
-    }
+    login: state.login
   }
 }
 
 export default connect(
-  mapStateToProps,
-  mapDsipatchToProps
+  mapStateToProps
 )(ShopList)
