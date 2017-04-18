@@ -1,13 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import * as loginAction from '../actions/login';
-import {shopList} from '../actions/shop';
+import ShopList from './ShopList';
 
 const LoginForm = ({loginForm, dispatch}) => {
   let phone, vcode;
   if (loginForm.login.success) {
-    dispatch();
-    return false;
+    return (
+      <ShopList />
+    )
   }
 
   return (

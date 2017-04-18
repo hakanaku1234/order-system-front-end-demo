@@ -5,7 +5,6 @@ import ShopList from '../components/ShopList';
 const App = () => (
   <div>
     <LoginForm />
-    <ShopList />
   </div>
 )
 

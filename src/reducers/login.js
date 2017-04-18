@@ -5,7 +5,7 @@ const initialState = {
   errorMessage: ''
 }
 
-const login = (state = initialState, action) => {
+export const login = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN': {
       let success = state.success;
@@ -29,5 +29,3 @@ const login = (state = initialState, action) => {
     }
   }
 }
-
-export default login;

@@ -1,20 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import List from './List';
 
-const ShopList = ({login}) => {
+const ShopList = ({listData}) => {
+  console.log('listData', listData);
+
   return (
     <div>
-      <div>{login.phone}</div>
-      <div>{login.errorMessage}</div>
+      {
+        listData.map(l => {
+          return <List key={l.id} {...l} />
+        })
+      }
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
-
   return {
-    login: state.login
+    listData: state.list.list
   }
 }
 
