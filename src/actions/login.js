@@ -4,7 +4,7 @@
  */
 
 // 登录 action
-export const login = (phone, vcode) => {
+export const loginAction = (phone, vcode) => {
   return {
     type: 'LOGIN',
     phone,

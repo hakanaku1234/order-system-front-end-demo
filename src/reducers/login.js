@@ -5,7 +5,7 @@ const initialState = {
   errorMessage: ''
 }
 
-export const login = (state = initialState, action) => {
+export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'LOGIN': {
       let success = state.success;

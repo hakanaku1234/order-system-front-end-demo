@@ -1,5 +1,5 @@
 const initialState = {
-  list: [{
+  products: [{
     id: '0',
     name: '123',
     text: '456'
@@ -10,11 +10,11 @@ const initialState = {
   }]
 }
 
-export const list = (state = initialState, action) => {
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LIST': {
+    case 'PRODUCTS': {
       return {
-        list: action.list
+        products: action.products
       }
     }
     default: {

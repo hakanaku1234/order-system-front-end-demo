@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import {login} from './login';
-import {list} from './list';
+import {loginReducer} from './login';
+import {productReducer} from './product';
 
 export default combineReducers({
-  login,
-  list
+  loginReducer,
+  productReducer
 })

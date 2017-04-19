@@ -1,16 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import * as loginAction from '../actions/login';
+import {loginAction} from '../actions/login';
 import ShopList from './ShopList';
 
-const LoginForm = ({loginForm, dispatch}) => {
-  let phone, vcode;
-  if (loginForm.login.success) {
+const LoginForm = ({login, dispatch}) => {
+  if (login.success) {
     return (
       <ShopList />
     )
   }
 
+  let phone, vcode;
   return (
     <form
       className="form"
@@ -43,7 +43,7 @@ const LoginForm = ({loginForm, dispatch}) => {
 
 const mapStateToProps = (state) => {
   return {
-    loginForm: state
+    login: state.login
   }
 }
 
