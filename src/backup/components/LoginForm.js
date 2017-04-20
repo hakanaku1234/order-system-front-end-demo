@@ -1,31 +1,23 @@
-/**
- * @author zail
- * @email zzzzail@163.com
- * @date 2017/4/20
- * @description
- */
-
 import React from 'react';
-import {connect} from 'react-redux';
-import {
-  loginRequestAction,
-  loginFailureAction,
-  loginSuccessAction
-} from '../actions/asyncLoginAction';
+import {connect} from 'react-redux'
+import {loginAction} from '../actions/login';
+import ShopList from './ShopList';
 
-const LoginForm = ({dispatch}) => {
+const LoginForm = ({login, dispatch}) => {
+  if (login.success) {
+    return (
+      <ShopList />
+    )
+  }
+
   let phone, vcode;
-
   return (
     <form
       className="form"
       onSubmit={
         e => {
           e.preventDefault();
-          dispatch(loginRequestAction({
-            phone: phone.value,
-            vcode: vcode.value
-          }));
+          dispatch(loginAction.login(phone.value, vcode.value));
         }
       }>
       <div className="form-group">
@@ -47,6 +39,14 @@ const LoginForm = ({dispatch}) => {
       </div>
     </form>
   )
+};
+
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
 }
 
-export default connect()(LoginForm)
+export default connect(
+  mapStateToProps
+)(LoginForm)

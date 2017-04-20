@@ -1,20 +1,15 @@
+/**
+ *
+ */
+
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import {createLogger} from 'redux-logger';
-import thunk from 'redux-thunk';
-
-import reducer from './reducers';
+import store from './store';
 import App from './containers/App';
+import config from './config/dev';
 
-const logger = createLogger();
-let store = createStore(
-  reducer,
-  applyMiddleware(thunk, logger));
-
-let config = require('./config/dev');
 window.__CONFIG__ = config;
 
 // Render the main component into the dom

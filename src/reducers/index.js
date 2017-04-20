@@ -1,8 +1,13 @@
+/**
+ * @author zail
+ * @email zzzzail@163.com
+ * @date 2017/4/20
+ * @description
+ */
+
 import {combineReducers} from 'redux';
-import {loginReducer} from './login';
-import {productReducer} from './product';
+import login from './asyncLoginReducer';
 
 export default combineReducers({
-  loginReducer,
-  productReducer
+  login
 })
