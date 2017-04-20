@@ -2,8 +2,8 @@
  *
  */
 
-import React, {} from 'react';
-import LoginForm from '../components/LoginForm';
+import React from 'react';
+import LoginForm from '../containers/LoginForm';
 
 const App = () => (
   <div>
